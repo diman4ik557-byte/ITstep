@@ -63,7 +63,7 @@ public class MyArrayList<T> {
 
     public void listSort() {
         if (this.getArr()[0] instanceof Integer) {
-            int[] intArrWithoutNull = new int[this.getArr().length];
+            Integer[] intArrWithoutNull = new Integer[this.getArr().length];
 
             for(int i = 0; i < intArrWithoutNull.length; ++i) {
                 if (this.getArr()[i] != null) {
@@ -86,7 +86,7 @@ public class MyArrayList<T> {
                 intArrWithoutNull[j + 1] = key;
             }
 
-            setArr(new Object[]{intArrWithoutNull});
+            this.setArr(intArrWithoutNull);
         }
 
         if (this.getArr()[0] instanceof Double) {
