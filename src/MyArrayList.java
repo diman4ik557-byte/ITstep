@@ -67,7 +67,7 @@ public class MyArrayList<T> {
 
             for(int i = 0; i < intArrWithoutNull.length; ++i) {
                 if (this.getArr()[i] != null) {
-                    intArrWithoutNull[i] = (int)this.getArr()[i];
+                    intArrWithoutNull[i] = (Integer)this.getArr()[i];
                 } else {
                     intArrWithoutNull[i] = 0;
                 }
@@ -86,7 +86,7 @@ public class MyArrayList<T> {
                 intArrWithoutNull[j + 1] = key;
             }
 
-            this.setArr(intArrWithoutNull);
+            setArr(new Object[]{intArrWithoutNull});
         }
 
         if (this.getArr()[0] instanceof Double) {
@@ -143,6 +143,26 @@ public class MyArrayList<T> {
             this.setArr(stringArr);
         }
 
+    }
+
+    public String listToString() {
+        StringBuilder listToStringB = new StringBuilder();
+        listToStringB.append("[");
+
+        for(int i = 0; i < this.getArr().length; ++i) {
+            if (this.getArr()[i] == null) {
+                listToStringB.append("null");
+            } else {
+                listToStringB.append(this.getArr()[i].toString());
+            }
+
+            if (i < this.getArr().length - 1) {
+                listToStringB.append(", ");
+            }
+        }
+
+        listToStringB.append("]");
+        return listToStringB.toString();
     }
 
 
