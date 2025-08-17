@@ -42,6 +42,27 @@ public class MyArrayList<T> {
         return this.getArr()[index];
     }
 
+    public boolean remove(int index) {
+        this.indexGetCheck(index);
+        Object var10000 = this.arr[index];
+        var10000 = this.arr[index];
+
+        for(int i = index; i < this.size - 1; ++i) {
+            this.arr[i] = this.arr[i + 1];
+        }
+
+        this.arr[this.size - 1] = null;
+        --this.size;
+        return true;
+    }
+
+    public void listClear() {
+        this.arr = new Object[5];
+        this.size = 0;
+    }
+
+
+
     private boolean indexAddCheck(int index) {
         if (index >= 0 && index <= this.size) {
             return false;
