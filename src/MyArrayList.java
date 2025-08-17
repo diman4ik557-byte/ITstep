@@ -61,6 +61,90 @@ public class MyArrayList<T> {
         this.size = 0;
     }
 
+    public void listSort() {
+        if (this.getArr()[0] instanceof Integer) {
+            int[] intArrWithoutNull = new int[this.getArr().length];
+
+            for(int i = 0; i < intArrWithoutNull.length; ++i) {
+                if (this.getArr()[i] != null) {
+                    intArrWithoutNull[i] = (int)this.getArr()[i];
+                } else {
+                    intArrWithoutNull[i] = 0;
+                }
+            }
+
+            int n = intArrWithoutNull.length;
+
+            for(int i = 1; i < n; ++i) {
+                int key = intArrWithoutNull[i];
+
+                int j;
+                for(j = i - 1; j >= 0 && intArrWithoutNull[j] > key; --j) {
+                    intArrWithoutNull[j + 1] = intArrWithoutNull[j];
+                }
+
+                intArrWithoutNull[j + 1] = key;
+            }
+
+            this.setArr(intArrWithoutNull);
+        }
+
+        if (this.getArr()[0] instanceof Double) {
+            Double[] doubleArrWithoutNull = new Double[this.getArr().length];
+
+            for(int i = 0; i < doubleArrWithoutNull.length; ++i) {
+                if (this.getArr()[i] != null) {
+                    doubleArrWithoutNull[i] = (Double)this.getArr()[i];
+                } else {
+                    doubleArrWithoutNull[i] = (double)0.0F;
+                }
+            }
+
+            int n = doubleArrWithoutNull.length;
+
+            for(int i = 1; i < n; ++i) {
+                Double key = doubleArrWithoutNull[i];
+
+                int j;
+                for(j = i - 1; j >= 0 && doubleArrWithoutNull[j] > key; --j) {
+                    doubleArrWithoutNull[j + 1] = doubleArrWithoutNull[j];
+                }
+
+                doubleArrWithoutNull[j + 1] = key;
+            }
+
+            this.setArr(doubleArrWithoutNull);
+        }
+
+        if (this.getArr()[0] instanceof String) {
+            String[] stringArr = new String[this.getArr().length];
+
+            for(int i = 0; i < stringArr.length; ++i) {
+                if (this.getArr()[i] == null) {
+                    throw new NullPointerException("Нельзя сортировать массив String если в нём есть null");
+                }
+
+                stringArr[i] = (String)this.getArr()[i];
+            }
+
+            int n = stringArr.length;
+
+            for(int i = 1; i < n; ++i) {
+                String key = stringArr[i];
+
+                int j;
+                for(j = i - 1; j >= 0 && stringArr[j].compareTo(key) > 0; --j) {
+                    stringArr[j + 1] = stringArr[j];
+                }
+
+                stringArr[j + 1] = key;
+            }
+
+            this.setArr(stringArr);
+        }
+
+    }
+
 
 
     private boolean indexAddCheck(int index) {
