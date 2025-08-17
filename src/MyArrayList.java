@@ -19,6 +19,47 @@ public class MyArrayList<T> {
             this.setArr(newArr);
         }
 
+    public void add(T elements) {
+        if (this.size == this.arr.length) {
+            this.addSize();
+        }
+
+        this.arr[this.size++] = elements;
+    }
+
+    public void addToIndex(int index, T element) {
+        this.indexAddCheck(index);
+        if (this.size == this.arr.length) {
+            this.addSize();
+        }
+
+        this.arr[index] = element;
+        ++this.size;
+    }
+
+    public Object getElement(int index) {
+        this.indexGetCheck(index);
+        return this.getArr()[index];
+    }
+
+    private boolean indexAddCheck(int index) {
+        if (index >= 0 && index <= this.size) {
+            return false;
+        } else {
+            throw new IndexOutOfBoundsException("Такого индекса в списке нет");
+        }
+    }
+
+    private boolean indexGetCheck(int index) {
+        if (index >= 0 && index < this.size) {
+            return false;
+        } else {
+            throw new IndexOutOfBoundsException("Такого индекса в списке нет");
+        }
+    }
+
+
+
     public Object[] getArr() {
         return this.arr;
     }
